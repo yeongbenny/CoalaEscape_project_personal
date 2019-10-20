@@ -1,4 +1,7 @@
-﻿room = game.createRoom("room", "main_room.jpg") // 방 생성
+﻿// 20155955 윤영배
+// 방탈출 개인과제
+
+room = game.createRoom("room", "main_room.jpg") // 방 생성
 room2 = game.createRoom("room2","garden.jpg") //창문 클릭 시 정원
 room3 = game.createRoom("room3","friday_first.jpg") //살인마 1번 방
 room4 = game.createRoom("room4","friday_second.jpg") //살인마 2번방
@@ -53,12 +56,9 @@ room.telescope = room.createObject("telescope", "telescope.png") //망원경 생
 room.telescope.setWidth(100)
 room.locateObject(room.telescope, 570, 670)
 room.telescope.hide()
-room2.telescope = room2.createObject("telescope","telescope.png") // room2용 망원경
-room2.telescope.hide()
 
 room.telescope.onClick = function () { //망원경 줍기
-    room2.telescope.pick()
-    room.telescope.hide()
+    room.telescope.pick()
     printMessage("망원경을 주웠다! usb대신 사용해보자")
 }
 
@@ -243,7 +243,7 @@ room4.book.onClick = function () { //책 클릭 시
 
 
 room2.sign.onClick = function () { // 표지판 클릭
-    if (game.getHandItem() == room2.telescope) {
+    if (game.getHandItem() == room.telescope) {
         showImageViewer("sign2.png", "");
         printMessage("주소가 잘 보인다...!!")
     } else {
@@ -337,10 +337,8 @@ room4.setRoomLight(0.7)
 
 room.lamp.onClick = function () {
         room.setRoomLight(0.75)
-        printMessage("여긴 어디지..?")
+        printMessage("우리 집이 아닌데..?")
 }
 
 game.start(room) // 게임시작
-
-
-printMessage("(소리를 꼭 켜고 플레이해주세요!)")
+printMessage("나는 누구...? 여긴 어디...?")
